@@ -23,12 +23,12 @@ void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) { //
     msg[msglen] = '\0';
 Serial.println((char *)msg);
     if(*(char *)msg == '1'){
-        digitalWrite(LED_BUILTIN, LOW);   // LED on
+        digitalWrite(2, LOW);   // LED on
         //microgear.chat(TargetWeb,"1");
         //send_data("ESP_LED_ON");
         send_json("ESP LED ON");
     }else{
-        digitalWrite(LED_BUILTIN, HIGH);  // LED off
+        digitalWrite(2, HIGH);  // LED off
       //microgear.chat(TargetWeb,"0");
       //send_data("ESP_LED_OFF");
       send_json("ESP LED OFF");
@@ -48,7 +48,7 @@ void setup() {
     Serial.begin(115200);
     Serial.println("Starting...");
 
-    pinMode(LED_BUILTIN, OUTPUT);
+    pinMode(2, OUTPUT);
   
     if (WiFi.begin(ssid, password)) {
         while (WiFi.status() != WL_CONNECTED) {
@@ -63,7 +63,7 @@ Serial.println("WiFi connected");
 
     microgear.init(KEY,SECRET,ALIAS);
     microgear.connect(APPID);
-     digitalWrite(LED_BUILTIN, HIGH);   // LED on
+     //digitalWrite(2, HIGH);   // LED on
 }
 
 void send_json(String data){
