@@ -5,8 +5,8 @@ function send_LINE($msg){
  $access_token = '8auxoYNmwKKiI0DqQwDHmVIP+r/Bef6dZbTdnPPNY46xKD51B1sQbcHsEOeIYZr0IkjdLRzyNNfQ+QuADbqU4rK9qErTtQi1QwOy+aQHkuGgkYDWZK32SDWrcfsQhQoKmhgqMrt+SXNOHkKNs/n46QdB04t89/1O/w1cDnyilFU='; 
  $messages = [
         'type' => 'text',
-        'text' => $msg,
-        'text' => $text
+        'text' => $msg
+        
       ];
 
       // Make a POST Request to Messaging API to reply to sender
@@ -14,7 +14,6 @@ function send_LINE($msg){
       $data = [
 
         'to' => 'uae9500a76c7fbeb157fbef2385197e5d',
-        'replyToken' => $replyToken,
         'messages' => [$messages],
       ];
       $post = json_encode($data);
