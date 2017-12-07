@@ -8,7 +8,7 @@ function send_LINE($msg){
         'text' => $msg
         
       ];
-      if($msg == "ON"){
+      if($text == "ON"){
         $msg = 'N';
       }
       // Make a POST Request to Messaging API to reply to sender
