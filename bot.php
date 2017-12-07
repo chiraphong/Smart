@@ -26,26 +26,7 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-			if($text == "ON"){
-			      	$uri = "https://api.netpie.io/topic/Smartfarm01/sensor/switch?auth=9pd3UJu2niXn06Z:ztdhv77wgvm0ilqox0yn0XuYm";
-       				$response = \Httpful\Request::get($uri)->send();
-      				$result = json_decode($response->body, true);
-        			//echo "debug = " . $result[0]['payload'] . "\n";
-       				$debug = $result[0]['payload'];
-          			//	echo $response . "\n" ;
-				$post = json_encode($debug);
-				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-				$chi = curl_init($uri);
-				curl_setopt($chi, CURLOPT_CUSTOMREQUEST, "POST");
-				curl_setopt($chi, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($chi, CURLOPT_POSTFIELDS, $post);
-				curl_setopt($chi, CURLOPT_HTTPHEADER, $headers);
-				curl_setopt($chi, CURLOPT_FOLLOWLOCATION, 1);
-				$result = curl_exec($chi);
-				curl_close($chi);
-				echo $result . "\r\n";
-        				
-			}
+			
 			// Build message to reply back
 			$messages = [
        				 'type' => 'text',
@@ -54,12 +35,12 @@ if (!is_null($events['events'])) {
       			];
 			
 			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/reply';
-			$data = [
-				'replyToken' => $replyToken,
-				'messages' => [$messages],
-			];
-			$post = json_encode($data);
+			$uri = "https://api.netpie.io/topic/Smartfarm01/sensor/switch?auth=9pd3UJu2niXn06Z:ztdhv77wgvm0ilqox0yn0XuYm";
+       			$response = \Httpful\Request::get($uri)->send();
+      			$result = json_decode($response->body, true);
+        			
+       			$debug = $result[0]['payload'];
+			$post = json_encode($debug);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
