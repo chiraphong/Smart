@@ -36,7 +36,7 @@ if (!is_null($events['events'])) {
       			];
 			
 			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/reply';
+			$url = 'https://api.netpie.io/topic/Smartfarm01/sensor/switch?auth=9pd3UJu2niXn06Z:ztdhv77wgvm0ilqox0yn0XuYm';
 			$data = [
 				'replyToken' => $replyToken,
 				'messages' => [$messages],
