@@ -5,7 +5,8 @@ function send_LINE($msg){
  $access_token = '8auxoYNmwKKiI0DqQwDHmVIP+r/Bef6dZbTdnPPNY46xKD51B1sQbcHsEOeIYZr0IkjdLRzyNNfQ+QuADbqU4rK9qErTtQi1QwOy+aQHkuGgkYDWZK32SDWrcfsQhQoKmhgqMrt+SXNOHkKNs/n46QdB04t89/1O/w1cDnyilFU='; 
  $messages = [
         'type' => 'text',
-        'text' => $text
+        'text' => $text,
+        'text' => $msg
         
       ];
       if($text == "ON"){
