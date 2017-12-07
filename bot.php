@@ -1,7 +1,6 @@
 <?php
  require("pub.php");
  require("line.php");
-include ("httpful.phar");
 
  $access_token = '8auxoYNmwKKiI0DqQwDHmVIP+r/Bef6dZbTdnPPNY46xKD51B1sQbcHsEOeIYZr0IkjdLRzyNNfQ+QuADbqU4rK9qErTtQi1QwOy+aQHkuGgkYDWZK32SDWrcfsQhQoKmhgqMrt+SXNOHkKNs/n46QdB04t89/1O/w1cDnyilFU='; 
 // Get POST body content
@@ -26,6 +25,12 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
+			include "httpful.phar";
+			$uri = "https://api.netpie.io/topic/Smartfarm01/sensor/switch?auth=9pd3UJu2niXn06Z:ztdhv77wgvm0ilqox0yn0XuYm";
+			$response = \Httpful\Request::get($uri)->send();
+			$result = json_decode($response->body, true);
+			echo "debug = " . $result[0]['payload'] . "\n";
+			$debug = $result[0]['payload'];
 			
 			// Build message to reply back
 			$messages = [
@@ -35,11 +40,11 @@ if (!is_null($events['events'])) {
       			];
 			
 			// Make a POST Request to Messaging API to reply to sender
-			$uri = "https://api.netpie.io/topic/Smartfarm01/sensor/switch?auth=9pd3UJu2niXn06Z:ztdhv77wgvm0ilqox0yn0XuYm";
-       			$response = \Httpful\Request::get($uri)->send();
-      			$result = json_decode($response->body, true);
-        			
-       			$debug = $result[0]['payload'];
+			$url = 'https://api.line.me/v2/bot/message/reply';
+			$data = [
+				'replyToken' => $replyToken,
+				'messages' => [$messages],
+			];
 			$post = json_encode($debug);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 			$ch = curl_init($url);
