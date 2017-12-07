@@ -1,6 +1,7 @@
 <?php
  require("pub.php");
  require("line.php");
+ $access_token = '8auxoYNmwKKiI0DqQwDHmVIP+r/Bef6dZbTdnPPNY46xKD51B1sQbcHsEOeIYZr0IkjdLRzyNNfQ+QuADbqU4rK9qErTtQi1QwOy+aQHkuGgkYDWZK32SDWrcfsQhQoKmhgqMrt+SXNOHkKNs/n46QdB04t89/1O/w1cDnyilFU='; 
 
 // Get POST body content
 $content = file_get_contents('php://input');
