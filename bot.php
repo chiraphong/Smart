@@ -25,12 +25,7 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-			include "httpful.phar";
-			$uri = "https://api.netpie.io/topic/Smartfarm01/sensor/switch?auth=9pd3UJu2niXn06Z:ztdhv77wgvm0ilqox0yn0XuYm";
-			$response = \Httpful\Request::get($uri)->send();
-			$result = json_decode($response->body, true);
-			echo "debug = " . $result[0]['payload'] . "\n";
-			$debug = $result[0]['payload'];
+			
 			
 			// Build message to reply back
 			$messages = [
