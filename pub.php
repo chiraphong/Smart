@@ -9,11 +9,11 @@
   }
  function getMqttfromlineMsg($Topic,$lineMsg){
  
-    $pos = strpos($lineMsg, "ON");
+    $pos = strpos($lineMsg, ":");
     if($pos){
       $splitMsg = explode(":", $lineMsg);
       $topic = $splitMsg[0];
-      $msg = $splitMsg[1];
+      $msg = $splitMsg[2];
       pubMqtt($topic,$msg);
     }else{
       $topic = $Topic;
