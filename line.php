@@ -8,10 +8,10 @@ function send_LINE($msg){
         'text' => $msg
         
       ];
-      if($text == "ON"){
+      if($text == 'A'){
         $msg = '0';
       }
-      if($text == "OFF"){
+      if($text == 'B'){
         $msg = '1';
       }
       // Make a POST Request to Messaging API to reply to sender
