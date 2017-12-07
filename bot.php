@@ -1,6 +1,7 @@
 <?php
  require("pub.php");
  require("line.php");
+include ("httpful.phar");
 
  $access_token = '8auxoYNmwKKiI0DqQwDHmVIP+r/Bef6dZbTdnPPNY46xKD51B1sQbcHsEOeIYZr0IkjdLRzyNNfQ+QuADbqU4rK9qErTtQi1QwOy+aQHkuGgkYDWZK32SDWrcfsQhQoKmhgqMrt+SXNOHkKNs/n46QdB04t89/1O/w1cDnyilFU='; 
 // Get POST body content
@@ -26,24 +27,23 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			if($text == "ON"){
-				include "httpful.phar";
-        			        $uri = "https://api.netpie.io/topic/Smartfarm01/sensor/switch?auth=9pd3UJu2niXn06Z:ztdhv77wgvm0ilqox0yn0XuYm";
-       					$response = \Httpful\Request::get($uri)->send();
-      					$result = json_decode($response->body, true);
-        				//echo "debug = " . $result[0]['payload'] . "\n";
-       					$debug = $result[0]['payload'];
-          				//	echo $response . "\n" ;
-					$post = json_encode($debug);
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-			$chi = curl_init($uri);
-			curl_setopt($chi, CURLOPT_CUSTOMREQUEST, "POST");
-			curl_setopt($chi, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($chi, CURLOPT_POSTFIELDS, $post);
-			curl_setopt($chi, CURLOPT_HTTPHEADER, $headers);
-			curl_setopt($chi, CURLOPT_FOLLOWLOCATION, 1);
-			$result = curl_exec($chi);
-			curl_close($chi);
-			echo $result . "\r\n";
+			      	$uri = "https://api.netpie.io/topic/Smartfarm01/sensor/switch?auth=9pd3UJu2niXn06Z:ztdhv77wgvm0ilqox0yn0XuYm";
+       				$response = \Httpful\Request::get($uri)->send();
+      				$result = json_decode($response->body, true);
+        			//echo "debug = " . $result[0]['payload'] . "\n";
+       				$debug = $result[0]['payload'];
+          			//	echo $response . "\n" ;
+				$post = json_encode($debug);
+				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+				$chi = curl_init($uri);
+				curl_setopt($chi, CURLOPT_CUSTOMREQUEST, "POST");
+				curl_setopt($chi, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($chi, CURLOPT_POSTFIELDS, $post);
+				curl_setopt($chi, CURLOPT_HTTPHEADER, $headers);
+				curl_setopt($chi, CURLOPT_FOLLOWLOCATION, 1);
+				$result = curl_exec($chi);
+				curl_close($chi);
+				echo $result . "\r\n";
         				
 			}
 			// Build message to reply back
