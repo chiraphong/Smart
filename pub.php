@@ -13,7 +13,7 @@
     if($pos){
       $splitMsg = explode(":", $lineMsg);
       $topic = $splitMsg[0];
-      $msg = $splitMsg[2];
+      $msg = $splitMsg[1];
       pubMqtt($topic,$msg);
     }else{
       $topic = $Topic;
