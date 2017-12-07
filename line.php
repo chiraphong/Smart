@@ -6,7 +6,7 @@ function send_LINE($msg){
  $messages = [
         'type' => 'text',
         'text' => $msg
-        //'text' => $text
+        'text' => $text
       ];
 
       // Make a POST Request to Messaging API to reply to sender
@@ -14,6 +14,7 @@ function send_LINE($msg){
       $data = [
 
         'to' => 'uae9500a76c7fbeb157fbef2385197e5d',
+        'replyToken' => $replyToken,
         'messages' => [$messages],
       ];
       $post = json_encode($data);
